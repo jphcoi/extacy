@@ -49,7 +49,7 @@ ranking='C-value'
 freq_thres=.000005
 topn=1000
 
-coherence_columns=['year']#'source','year']
+coherence_columns=['ISIpubdate','president']#'source','year']
 case_insensitive=False
 
 
