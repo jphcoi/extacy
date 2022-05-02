@@ -33,7 +33,7 @@ import os
 N_doc_sample=1000
 max_doc_size=3000 # characters
 text_field='abstract'
-data_file='/Users/jpcointet/Desktop/syllab/code/socsc.csv'
+data_file='sotu2021.csv'
 lang='en'
 
 #extraction parmeters
