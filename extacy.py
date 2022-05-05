@@ -256,7 +256,7 @@ def build_nested(sample_dictionary,fast=False):
         n_dict_inv.setdefault(n,[]).append(cle)
     ns=list(n_dict_inv.keys())
     ns.sort()
-
+    #print (ns)
     Nn=len(ns)
     cles=list(sample_dictionary.keys())
     cless={}
@@ -266,14 +266,22 @@ def build_nested(sample_dictionary,fast=False):
     nested={}
     for i in range(Nn-1):
         n=ns[Nn-i-1]
-        nminus=ns[Nn-i-2]
         print ("finding nested strings for ngram of size:", n)
         larger=n_dict_inv[n]
-        smaller=n_dict_inv[nminus]
+        smaller=[]
+        for k in range(2,Nn-i+1):
+            nminus=ns[Nn-i-k]
+            print ('nminus',nminus)
+            smaller.extend(n_dict_inv[nminus])
+        #print ("smaller,larger",smaller,larger)
         for x in tqdm(smaller,total=len(smaller)):
             xs=cless[x]
+            #print(xs)
             for y in larger:
-                if x in y:
+                #print(y)
+
+                #if x in y:
+                #    print("inside",y,x,xs,cless[y])
                     if xs <= cless[y]:
                         nested.setdefault(x,[]).append(y)
                         if y in nested:
